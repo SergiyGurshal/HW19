@@ -2,5 +2,5 @@ import React from 'react'
 import './home.sass'
 
 export default function Home() {
-  return <div className="homeTitile">WELCOME</div>
+  return <div className="home title">WELCOME</div>
 }

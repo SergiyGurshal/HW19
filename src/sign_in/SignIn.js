@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import '../sign_in/sign-in.sass'
 import authIcon from '../imgs/padlock.svg'
 import { getUserFromLS } from '../modules/localStorageMethods'
+import onChangeFn from '../modules/onChange'
 
 export default function SignIn() {
   const [email, setEmail] = useState({ value: '', right: false })
@@ -30,53 +31,33 @@ export default function SignIn() {
     ) {
       localStorage.setItem('autofill', JSON.stringify(rememberMe))
       e.target.reset()
-      window.location.href = '/home'
+      window.location.href = '/HW19#/home'
     }
-  }
-
-  const passwordChange = (e) => {
-    const valueOfInput = e.target.value
-
-    const passwordForm = /(?=.*[a-z])(?=.*[A-Z])......../
-
-    if (passwordForm.test(valueOfInput)) {
-      e.target.className = 'input right'
-      setPassword({ value: valueOfInput, right: true })
-    } else {
-      e.target.className = 'input wrong'
-      setPassword({ value: valueOfInput, right: false })
-    }
-  }
-
-  const emailChange = (e) => {
-    const valueOfInput = e.target.value
-
-    const emailForm = /...+@..+\...+/
-
-    if (emailForm.test(valueOfInput)) {
-      e.target.className = 'input right'
-      setEmail({ value: valueOfInput, right: true })
-    } else {
-      e.target.className = 'input wrong'
-      setEmail({ value: valueOfInput, right: false })
-    }
-  }
-
-  const rememberChange = (e) => {
-    setRememberMe(e.target.checked)
   }
 
   return (
-    <div className="sing-in">
+    <div className="sing">
       <div className="icon-container">
         <img src={authIcon} width="25px" height="25px" />
       </div>
-      <h2 className="title">Sing in</h2>
-      <form action="" className="sign-in-form" onSubmit={onFormSubmit}>
-        <input type="email" className="input" id="emailInput" placeholder="Email Address *" onChange={emailChange} />
-        <input type="password" className="input" id="passwordInput" placeholder="Password *" onChange={passwordChange} />
+      <h2 className="sign-title">Sing in</h2>
+      <form action="" className="sign-form" onSubmit={onFormSubmit}>
+        <input
+          type="email"
+          className="input"
+          id="emailInput"
+          placeholder="Email Address *"
+          onChange={(e) => onChangeFn(e, 'email', setEmail)}
+        />
+        <input
+          type="password"
+          className="input"
+          id="passwordInput"
+          placeholder="Password *"
+          onChange={(e) => onChangeFn(e, 'password', setPassword)}
+        />
         <div className="remember">
-          <input type="checkbox" name="remember" className="checkbox-remember" onClick={rememberChange} />
+          <input type="checkbox" name="remember" className="checkbox-remember" onClick={(e) => setRememberMe(e.target.checked)} />
           <label htmlFor="remember">Remember me</label>
         </div>
         <input type="submit" value="SIGN IN" className="submit-btn" />

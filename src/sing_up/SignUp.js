@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { addUserToLS } from '../modules/localStorageMethods'
+import onChangeFn from '../modules/onChange'
 
 import '../sing_up/sign-up.sass'
 import authIcon from '../imgs/padlock.svg'
@@ -20,89 +21,50 @@ export default function SignIn() {
       addUserToLS({ firstName: firstName.value, lastName: lastName.value, email: email.value, password: password.value })
       localStorage.setItem('autofill', JSON.stringify(false))
       e.target.reset()
-      window.location.href = '/home'
-    }
-  }
-
-  const policyChange = (e) => {
-    setpolicyChecked(e.target.checked)
-  }
-
-  const fNameChange = (e) => {
-    const valueOfInput = e.target.value
-    const nameForm = /...+/
-
-    if (nameForm.test(valueOfInput)) {
-      e.target.className = 'input name right'
-      setFirstName({ value: valueOfInput, right: true })
-    } else {
-      e.target.className = 'input name wrong'
-      setFirstName({ value: valueOfInput, right: false })
-    }
-  }
-
-  const lNameChange = (e) => {
-    const valueOfInput = e.target.value
-
-    const nameForm = /...+/
-
-    if (nameForm.test(valueOfInput)) {
-      e.target.className = 'input name right'
-      setLastName({ value: valueOfInput, right: true })
-    } else {
-      e.target.className = 'input name wrong'
-      setLastName({ value: valueOfInput, right: false })
-    }
-  }
-
-  const passwordChange = (e) => {
-    const valueOfInput = e.target.value
-
-    const passwordForm = /(?=.*[a-z])(?=.*[A-Z])......../
-
-    if (passwordForm.test(valueOfInput)) {
-      e.target.className = 'input right'
-      setPassword({ value: valueOfInput, right: true })
-    } else {
-      e.target.className = 'input wrong'
-      setPassword({ value: valueOfInput, right: false })
-    }
-  }
-
-  const emailChange = (e) => {
-    const valueOfInput = e.target.value
-
-    const emailForm = /...+@..+\...+/
-
-    if (emailForm.test(valueOfInput)) {
-      e.target.className = 'input right'
-      setEmail({ value: valueOfInput, right: true })
-    } else {
-      e.target.className = 'input wrong'
-      setEmail({ value: valueOfInput, right: false })
+      window.location.href = '/HW19#/home'
     }
   }
 
   return (
-    <div className="sing-in">
+    <div className="sing">
       <div className="icon-container">
         <img src={authIcon} width="25px" height="25px" />
       </div>
-      <h2 className="title">Sing up</h2>
-      <form action="" className="sign-up-form" onSubmit={onFormSubmit}>
-        <div className="full-name-container">
-          <input type="text" className="input name" placeholder="First name *" onChange={fNameChange} />
-          <input type="text" className="input name" placeholder="Last name *" onChange={lNameChange} />
+      <h2 className="sign-title">Sing up</h2>
+      <form action="" className="sign-form" onSubmit={onFormSubmit}>
+        <div className="name-container">
+          <input
+            type="text"
+            className="input name"
+            placeholder="First name *"
+            onChange={(e) => onChangeFn(e, 'name', setFirstName)}
+          />
+          <input
+            type="text"
+            className="input name"
+            placeholder="Last name *"
+            onChange={(e) => onChangeFn(e, 'name', setLastName)}
+          />
         </div>
-        <input type="email" className="input" placeholder="Email Address*" onChange={emailChange} />
-        <input type="password" className="input" placeholder="Password*" onChange={passwordChange} />
+        <input type="email" className="input" placeholder="Email Address*" onChange={(e) => onChangeFn(e, 'email', setEmail)} />
+        <input
+          type="password"
+          className="input"
+          placeholder="Password*"
+          onChange={(e) => onChangeFn(e, 'password', setPassword)}
+        />
         <div className="license">
-          <input type="checkbox" name="license" className="checkbox-license" onClick={policyChange} />
+          <input
+            type="checkbox"
+            name="license"
+            className="checkbox-license"
+            onClick={(e) => setpolicyChecked(e.target.checked)}
+          />
           <label htmlFor="license">I want to recive inspiration, marketing promotions and sell soul to the devil</label>
         </div>
         <input type="submit" value="SIGN UP" className="submit-btn" />
       </form>
-      <div className="links-container">
+      <div className="links-container-sign-up">
         <Link to="/sign-in" className="links">
           Already have an account? Sign in
         </Link>
