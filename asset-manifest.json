@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/HW19/static/css/main.5c73f3db.chunk.css",
-    "main.js": "/HW19/static/js/main.868555bb.chunk.js",
-    "main.js.map": "/HW19/static/js/main.868555bb.chunk.js.map",
+    "main.css": "/HW19/static/css/main.b0fc1599.chunk.css",
+    "main.js": "/HW19/static/js/main.2a737b96.chunk.js",
+    "main.js.map": "/HW19/static/js/main.2a737b96.chunk.js.map",
     "runtime-main.js": "/HW19/static/js/runtime-main.1db13a76.js",
     "runtime-main.js.map": "/HW19/static/js/runtime-main.1db13a76.js.map",
     "static/js/2.18c76574.chunk.js": "/HW19/static/js/2.18c76574.chunk.js",
@@ -10,14 +10,14 @@
     "static/js/3.95d397d5.chunk.js": "/HW19/static/js/3.95d397d5.chunk.js",
     "static/js/3.95d397d5.chunk.js.map": "/HW19/static/js/3.95d397d5.chunk.js.map",
     "index.html": "/HW19/index.html",
-    "static/css/main.5c73f3db.chunk.css.map": "/HW19/static/css/main.5c73f3db.chunk.css.map",
+    "static/css/main.b0fc1599.chunk.css.map": "/HW19/static/css/main.b0fc1599.chunk.css.map",
     "static/js/2.18c76574.chunk.js.LICENSE.txt": "/HW19/static/js/2.18c76574.chunk.js.LICENSE.txt",
     "static/media/padlock.9fc8846a.svg": "/HW19/static/media/padlock.9fc8846a.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.1db13a76.js",
     "static/js/2.18c76574.chunk.js",
-    "static/css/main.5c73f3db.chunk.css",
-    "static/js/main.868555bb.chunk.js"
+    "static/css/main.b0fc1599.chunk.css",
+    "static/js/main.2a737b96.chunk.js"
   ]
 }
